@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.sell.dao.HouseMsgMapper">
+  <resultMap id="BaseResultMap" type="com.house.sell.model.HouseMsg">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="msg" jdbcType="VARCHAR" property="msg" />
+    <result column="agent_id" jdbcType="BIGINT" property="agentId" />
+    <result column="house_id" jdbcType="BIGINT" property="houseId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.house.sell.model.HouseMsg">
+    insert into house_msg (id, msg, agent_id, 
+      house_id, user_name, create_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{msg,jdbcType=VARCHAR}, #{agentId,jdbcType=BIGINT}, 
+      #{houseId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.house.sell.model.HouseMsg">
+    insert into house_msg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="msg != null">
+        msg,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="houseId != null">
+        house_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=BIGINT},
+      </if>
+      <if test="houseId != null">
+        #{houseId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

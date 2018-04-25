@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.sell.dao.HuserMapper">
+  <resultMap id="BaseResultMap" type="com.house.sell.model.Huser">
+    <result column="id" jdbcType="TINYINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="aboutme" jdbcType="VARCHAR" property="aboutme" />
+    <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="type" jdbcType="BIT" property="type" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="enable" jdbcType="BIT" property="enable" />
+    <result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.house.sell.model.Huser">
+    insert into huser (id, name, phone, 
+      email, aboutme, passwd, 
+      avatar, type, create_time, 
+      enable, agency_id)
+    values (#{id,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, 
+      #{email,jdbcType=VARCHAR}, #{aboutme,jdbcType=VARCHAR}, #{passwd,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{enable,jdbcType=BIT}, #{agencyId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.house.sell.model.Huser">
+    insert into huser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="aboutme != null">
+        aboutme,
+      </if>
+      <if test="passwd != null">
+        passwd,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="enable != null">
+        enable,
+      </if>
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=TINYINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="aboutme != null">
+        #{aboutme,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enable != null">
+        #{enable,jdbcType=BIT},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+    <select id="findById" parameterType="Long" resultType="com.house.sell.model.Huser">
+      select * from huser where id=#{id}
+    </select>
+</mapper>
