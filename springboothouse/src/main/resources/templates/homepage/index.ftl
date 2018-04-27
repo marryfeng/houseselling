@@ -7,7 +7,7 @@
 <!-- Wrapper -->
 <div class="wrapper">
 
-<@common.nav/>
+    <@common.nav/>
 
     <!-- Slider -->
     <div id="slider" class="loading has-parallax">
@@ -92,19 +92,19 @@
 
     <!-- Page Content -->
     <div id="page-content">
-
-
+       
+      
         <aside id="advertising" class="block">
-
+            
         </aside>
-      <#--  <section id="new-properties" class="block">
+        <section id="new-properties" class="block">
             <div class="container">
                 <header class="section-title">
                     <h2>新上房源</h2>
                     <a href="/house/list" class="link-arrow">所有房源</a>
                 </header>
                 <div class="row">
-                <#list recomHouses as house>
+                   <#list recomHouses as house>
                     <div class="col-md-3 col-sm-6">
                         <div class="property">
                             <a href="/house/detail?id=${house.id}">
@@ -137,13 +137,13 @@
                                     </ul>
                                 </div>
                             </a>
-                        </div><!-- /.property &ndash;&gt;
-                    </div><!-- /.col-md-3 &ndash;&gt;
-                </#list>
-
-                </div><!-- /.row&ndash;&gt;
-            </div><!-- /.container&ndash;&gt;
-        </section><!-- /#new-properties&ndash;&gt;-->
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                   </#list>
+                 
+                </div><!-- /.row-->
+            </div><!-- /.container-->
+        </section><!-- /#new-properties-->
         <section id="testimonials" class="block">
             <div class="container">
                 <header class="section-title"><h2>Testimonials</h2></header>
@@ -188,28 +188,28 @@
     </div>
     <!-- end Page Content -->
     <!-- Page Footer -->
-<@common.footer/>
+     <@common.footer/>
     <!-- end Page Footer -->
 </div>
 
 <div id="overlay"></div>
 
-<@common.js/>
+ <@common.js/>
 
 <script>
     $(window).load(function(){
         initializeOwl(false);
     });
     $(document).ready(function() {
-        var errorMsg   = "${errorMsg!""}";
-        var successMsg = "${successMsg!""}";
-        if(errorMsg){
-            errormsg("error",errorMsg);
-        }
-        if(successMsg) {
-            successmsg("success",successMsg);
-        }
-    })
+          var errorMsg   = "${errorMsg!""}";
+          var successMsg = "${successMsg!""}";
+          if(errorMsg){ 
+              errormsg("error",errorMsg);
+          }
+          if(successMsg) {
+              successmsg("success",successMsg);
+          }
+        })
 </script>
 </body>
 </html>

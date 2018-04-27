@@ -24,7 +24,7 @@ public class TestController {
         Long id=1L;
         Huser user = testService.findById(id);
         model.put("user",user);
-        return "he";
+        return "hello";
     }
 
     @RequestMapping("index")
