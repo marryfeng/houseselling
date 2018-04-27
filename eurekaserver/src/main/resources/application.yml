@@ -1,0 +1,22 @@
+server:
+  port: 8666
+spring:
+  application:
+    name: eurekaserver
+eureka:
+  instance:
+    hostname: localhost
+#配置server信息
+#服务留存的比例低于0.5则进入保护模式
+  server:
+    renewal-percent-threshold: 0.5
+#是否开启自我保护模式
+    enable-self-preservation: true
+#client的配置
+  client:
+    register-with-eureka: false
+    #是否启用默认获取注册信息
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#注册地址
