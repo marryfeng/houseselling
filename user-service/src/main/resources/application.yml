@@ -1,0 +1,46 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: user-service
+  druid:
+      druidClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/user-agency?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      username: root
+      password: 725810
+  #最大连接数
+      maxActive: 30
+  #最小连接数
+      minIdle: 5
+  #获取连接的最大等待时间
+      maxWait: 10000
+  #解决mysql8小时的问题
+      validationgQuery: SELECT 'X'
+  #空闲连接的检查时间间隔
+      timeBetweenEvictionRunsMillis: 60000
+  #空闲连接最小空闲时间
+      minEvictableIdleTimeMillis: 300000
+  freemarker:
+      charset: UTF-8
+      content-type: text/html;charset=UTF-8
+      expose-request-attributes: true
+      expose-session-attributes: true
+      expose-spring-macro-helpers: true
+      suffix: .ftl
+      settings:
+          datetime_format: yyyy-mm-dd HH:mm:ss
+          default_encoding: UTF-8
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8666/eureka
+      #服务的健康状态发送
+    healthcheck:
+          enabled: true
+#心跳间隔时间和过期时间，每隔10秒进行检测看下是否继续保持
+  instance:
+  #这个是client向server发送心跳的间隔时间，默认是30
+    lease-renewal-interval-in-seconds: 5
+    #这个是如果server没有接收到client的心跳，默认的过期时间是90s，如果过期了server会将服务实例注销掉
+    lease-expiration-duration-in-seconds: 10
+#服务的健康状态发送
